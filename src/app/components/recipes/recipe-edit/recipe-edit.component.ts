@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -9,8 +11,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class RecipeEditComponent implements OnInit {
   id: number;
   editMode: boolean = false;
+  recipeForm: FormGroup;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private recipeService: RecipeService) {}
 
   ngOnInit() {
     this.route.params
@@ -19,8 +22,28 @@ export class RecipeEditComponent implements OnInit {
           this.id = Number(params['id']);
           // Se tivermos um 'id' na URL, estaremos no modo edição. Se não, teremos o 'new', que seria um novo, e não uma edição:
           this.editMode = params['id'] != null;
-          console.log(this.editMode);
+          // Quando mudamos o 'id' temos um indicativo de que o forms de edição foi alterado para um novo item, e por isso atualizamos os campos do respectivo forms:
+          this.initForm();
         }
       );
+  }
+
+  private initForm() {
+    let recipeName = '';
+    let recipeImgPath = '';
+    let recipeDescription = '';
+
+    if(this.editMode) {
+      let recipe = this.recipeService.getRecipe(this.id);
+      recipeName = recipe.name;
+      recipeImgPath = recipe.image;
+      recipeDescription = recipe.description;
+    }
+
+    this.recipeForm = new FormGroup({
+      'name': new FormControl(recipeName),
+      'imagePath': new FormControl(recipeImgPath),
+      'description': new FormControl(recipeDescription),
+    });
   }
 }
