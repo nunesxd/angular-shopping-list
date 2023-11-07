@@ -19,8 +19,8 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <label for="imagemPath">Image URL</label>
-                        <input type="text" id="imagemPath" class="form-control"
+                        <label for="imagePath">Image URL</label>
+                        <input type="text" id="imagePath" class="form-control"
                             formControlName="imagePath">
                     </div>
                 </div>
@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <label for="description">Descrition</label>
+                        <label for="description">Description</label>
                         <textarea type="text" id="description" class="form-control" rows="6"
                             formControlName="description"></textarea>
                     </div>
@@ -49,11 +49,11 @@
                         [formGroupName]="i">
                         <div class="col-xs-8">
                             <input type="text" class="form-control"
-                                formControlName="ingredientName">
+                                formControlName="name">
                         </div>
                         <div class="col-xs-2">
                             <input type="number" class="form-control"
-                                formControlName="ingredientAmount">
+                                formControlName="amount">
                         </div>
                         <div class="col-xs-2">
                             <button class="btn btn-danger">X</button>
