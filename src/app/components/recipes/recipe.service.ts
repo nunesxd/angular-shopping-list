@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
@@ -7,6 +7,7 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
 export class RecipeService {
+  recipesChanged = new Subject<Recipe[]>();
   private recipesArray: Recipe[] = [
     new Recipe(
       'New Recipe Test 1', 
@@ -34,5 +35,16 @@ export class RecipeService {
 
   addIngredientToShoppingList(ingredient: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredient);
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipesArray.push(recipe);
+    // Devemos enviar um nova cópia, novo "slice", pois, se não, apenas teriamos a copia inicial de receitas, sem a atualização.
+    this.recipesChanged.next(this.recipesArray.slice());
+  }
+
+  updateRecipe(id: number, newRecipe: Recipe) {
+    this.recipesArray[id] = newRecipe;
+    this.recipesChanged.next(this.recipesArray.slice());
   }
 }
