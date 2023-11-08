@@ -21,14 +21,15 @@
                     <div class="form-group">
                         <label for="imagePath">Image URL</label>
                         <input type="text" id="imagePath" class="form-control"
-                            formControlName="imagePath">
+                            formControlName="imagePath"
+                            #imagePath>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <img src="" alt="Recipe Image" class="img-responsive">
+                        <img [src]="imagePath.value" alt="Recipe Image" class="img-responsive">
                     </div>
                 </div>
             </div>
