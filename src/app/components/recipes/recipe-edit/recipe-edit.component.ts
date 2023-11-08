@@ -78,6 +78,10 @@ export class RecipeEditComponent implements OnInit {
     }));
   }
 
+  onDeleteIngredient(id: number) {
+    (<FormArray>this.recipeForm.get('ingredients')).removeAt(id);
+  }
+
   onSubmit() {
     // Podemos passar o valor do forms diretamente, sem precisar criar um novo objeto.
     // const newRecipe = new Recipe(
