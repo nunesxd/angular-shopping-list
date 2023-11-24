@@ -24,6 +24,11 @@ export class RecipeService {
 
   constructor(private shoppingListService: ShoppingListService) {}
 
+  setRecipes(recipes: Recipe[]) {
+    this.recipesArray = recipes;
+    this.recipesChanged.next(this.recipesArray.slice());
+  }
+
   getRecipes() {
     // O 'slice' retorna uma cópia, se não enviaríamos uma refência direta ao array.
     return this.recipesArray.slice();
