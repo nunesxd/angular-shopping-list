@@ -8,19 +8,20 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 @Injectable()
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
-  private recipesArray: Recipe[] = [
-    new Recipe(
-      'New Recipe Test 1', 
-      'Test recipe 1', 
-      'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&webp=true&resize=375,341',
-      [new Ingredient('Bread', 1),
-       new Ingredient('Cheese', 2)]),
-    new Recipe(
-      'New Recipe Test 2', 
-      'Test recipe 2', 
-      'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&webp=true&resize=375,341',
-      [new Ingredient('Tomato', 2)])
-  ];
+  // private recipesArray: Recipe[] = [
+  //   new Recipe(
+  //     'New Recipe Test 1', 
+  //     'Test recipe 1', 
+  //     'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&webp=true&resize=375,341',
+  //     [new Ingredient('Bread', 1),
+  //      new Ingredient('Cheese', 2)]),
+  //   new Recipe(
+  //     'New Recipe Test 2', 
+  //     'Test recipe 2', 
+  //     'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&webp=true&resize=375,341',
+  //     [new Ingredient('Tomato', 2)])
+  // ];
+  private recipesArray: Recipe[] = [];
 
   constructor(private shoppingListService: ShoppingListService) {}
 
