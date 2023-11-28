@@ -1,5 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
 
 interface AuthResponseData {
     idToken: string,
@@ -21,6 +23,9 @@ export class AuthService {
             email: email,
             password: password,
             returnSecureToken: true
-        });
+        })
+        .pipe(catchError(errorRes => {
+            return throwError(errorRes.message);
+        }));
     }
 }
