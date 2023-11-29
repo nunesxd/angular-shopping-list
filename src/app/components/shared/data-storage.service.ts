@@ -28,7 +28,7 @@ export class DataStorageService {
             take(1), 
             exhaustMap(user => {
                 return this.http.get<Recipe[]>(
-                    'https://ng-http-49259-default-rtdb.firebaseio.com/recipes.json?auth=', 
+                    'https://ng-http-49259-default-rtdb.firebaseio.com/recipes.json?', 
                     {
                         params: new HttpParams().set('auth', user.token)
                     }
