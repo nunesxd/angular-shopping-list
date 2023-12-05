@@ -21,6 +21,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { LoadingSpinnerComponent } from './components/shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './components/auth/auth-interceptor.service';
 import { AlertComponent } from './components/shared/alert/alert.component';
+import { PlaceholderDirective } from './components/shared/placeholder/placeholder.directive';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { AlertComponent } from './components/shared/alert/alert.component';
     RecipeEditComponent,
     AuthComponent,
     LoadingSpinnerComponent,
-    AlertComponent
+    AlertComponent,
+    PlaceholderDirective
   ],
   imports: [
     BrowserModule,
