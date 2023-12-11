@@ -22,7 +22,6 @@ import { SharedModule } from "../shared/shared.module";
         RecipeEditComponent,
     ],
     imports: [
-        AppRoutingModule,
         ReactiveFormsModule,
         RecipesRoutingModule,
         SharedModule
